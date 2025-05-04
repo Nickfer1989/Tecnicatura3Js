@@ -1,0 +1,55 @@
+@startuml
+
+class DispositivoEntrada {
+  -tipoEntrada: string
+  -marca: string
+  +get/set tipoEntrada
+  +get/set marca
+}
+
+class Raton {
+  -idRaton: number
+  -contadorRatones: number
+  +toString()
+}
+
+class Teclado {
+  -idTeclado: number
+  -contadorTeclado: number
+  +toString()
+}
+
+class Monitor {
+  -idMonitor: number
+  -marca: string
+  -tamanio: string
+  -contadorMonitores: number
+  +toString()
+}
+
+class Computadora {
+  -idComputadora: number
+  -nombre: string
+  -monitor: Monitor
+  -teclado: Teclado
+  -raton: Raton
+  -contadorComputadoras: number
+  +toString()
+}
+
+class Orden {
+  -_idOrden: number
+  -_computadoras: Computadora[]
+  -contadorOrdenes: number
+  +agregarComputadora()
+  +mostrarOrden()
+}
+
+DispositivoEntrada <|-- Raton
+DispositivoEntrada <|-- Teclado
+Computadora o-- Monitor
+Computadora o-- Raton
+Computadora o-- Teclado
+Orden --> Computadora
+
+@enduml
